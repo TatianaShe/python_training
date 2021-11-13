@@ -56,3 +56,13 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         # submit deletion
         wd.find_element_by_css_selector("[value = 'Delete']")
+
+    def add_first_contact_to_group(self, addtogroup):
+        wd = self.app.wd
+        # select first contact
+        wd.find_element_by_name("selected[]").click()
+        # select group
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(addtogroup.to_group)
+        # submit add
+        wd.find_element_by_name("add").click()
