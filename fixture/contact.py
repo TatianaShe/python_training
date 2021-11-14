@@ -55,8 +55,8 @@ class ContactHelper:
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # submit deletion
-        wd.find_element_by_css_selector("[value = 'Delete']")
-        #close pop-up
+        wd.find_element_by_css_selector("[value = 'Delete']").click()
+        #accept pop-up
         wd.switch_to.alert.accept()
 
     def add_first_contact_to_group(self, add_to_group):
@@ -72,7 +72,7 @@ class ContactHelper:
     def edit_first_contact(self, contact):
         wd = self.app.wd
         # init contact edit
-        wd.find_element_by_css_selector("a[href*='edit.php?id=1']").click()
+        wd.find_element_by_css_selector("#maintable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(8) > a:nth-child(1)").click()
         # edit contact
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -107,3 +107,8 @@ class ContactHelper:
         wd.find_element_by_name("byear").send_keys(contact.byear)
         # submit edit
         wd.find_element_by_name("update").click()
+
+    def view_first_contact(self):
+        wd = self.app.wd
+        # view contact
+        wd.find_element_by_css_selector("#maintable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(7) > a:nth-child(1)")
