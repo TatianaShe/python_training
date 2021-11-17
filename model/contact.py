@@ -13,9 +13,3 @@ class Contact:
         self.bday = bday
         self.bmonth = bmonth
         self.byear = byear
-
-
-class AddToGroup:
-
-    def __init__(self, to_group):
-        self.to_group = to_group

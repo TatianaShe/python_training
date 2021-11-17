@@ -40,10 +40,10 @@ class ContactHelper:
         wd.find_element_by_name("email").send_keys(contact.email)
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
-        #wd.find_element_by_css_selector("option[value=\"1\"]").click()
+        # wd.find_element_by_css_selector("option[value=\"1\"]").click()
         wd.find_element_by_name("bmonth").click()
         Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
-        #wd.find_element_by_css_selector("option[value=\"May\"]").click()
+        # wd.find_element_by_css_selector("option[value=\"May\"]").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(contact.byear)
@@ -59,13 +59,13 @@ class ContactHelper:
         #accept pop-up
         wd.switch_to.alert.accept()
 
-    def add_first_contact_to_group(self, add_to_group):
+    def move_first_contact_to_first_group(self):
         wd = self.app.wd
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # select group
         wd.find_element_by_name("to_group").click()
-        Select(wd.find_element_by_name("to_group")).select_by_visible_text(add_to_group.to_group)
+        Select(wd.find_element_by_name("to_group")).select_by_index("0")
         # submit add
         wd.find_element_by_name("add").click()
 
