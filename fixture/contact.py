@@ -10,6 +10,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
+    def return_to_home_page(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+
     def fill_form(self, contact):
         wd = self.app.wd
         wd.find_element_by_name("firstname").click()
@@ -46,23 +50,28 @@ class ContactHelper:
 
     def create(self, contact):
         wd = self.app.wd
+        self.app.open_home_page()
         self.open_add_new_page()
         # fill contact form
         self.fill_form(contact)
         # submit contact creation
         wd.find_element_by_name("submit").click()
+        self.app.return_to_home_page()
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.app.open_home_page()
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # submit deletion
         wd.find_element_by_css_selector("[value = 'Delete']").click()
         #accept pop-up
         wd.switch_to.alert.accept()
+        self.return_to_home_page()
 
     def move_first_contact_to_first_group(self):
         wd = self.app.wd
+        self.app.open_home_page()
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # select group
@@ -70,17 +79,22 @@ class ContactHelper:
         Select(wd.find_element_by_name("to_group")).select_by_index("0")
         # submit add
         wd.find_element_by_name("add").click()
+        self.return_to_home_page()
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
+        self.app.open_home_page()
         # init contact edit
         wd.find_element_by_css_selector("#maintable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(8) > a:nth-child(1)").click()
         # edit contact
         self.fill_form(contact)
         # submit edit
         wd.find_element_by_name("update").click()
+        self.app.return_to_home_page()
 
     def view_first_contact(self):
         wd = self.app.wd
+        self.app.open_home_page()
         # view contact
-        wd.find_element_by_css_selector("#maintable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(7) > a:nth-child(1)")
+        wd.find_element_by_css_selector("#maintable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(7) > a:nth-child(1)").click()
+        self.return_to_home_page()
