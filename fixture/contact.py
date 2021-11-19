@@ -85,7 +85,7 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # init contact edit
-        wd.find_element_by_css_selector("#maintable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(8) > a:nth-child(1)").click()
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
         # edit contact
         self.fill_form(contact)
         # submit edit
@@ -96,5 +96,5 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # view contact
-        wd.find_element_by_css_selector("#maintable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(7) > a:nth-child(1)").click()
+        wd.find_element_by_xpath("//img[@alt='Details']").click()
         self.return_to_home_page()
