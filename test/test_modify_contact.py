@@ -3,9 +3,12 @@ from model.contact import Contact
 
 
 def test_edit_first_contact(app):
-    app.session.login(username="admin", password="secret")
+    if app.contact.count() == 0:
+        app.contact.create(
+            Contact(firstname="Alex", middlename="Sergeevich", lastname="Buth", nickname="alexalex", company="VK",
+                    address="Moscow, Novaya st., 36 - 94",
+                    mobilephone="89204567893", email="alex@pochta.ru", bday="17", bmonth="December", byear="1991"))
     app.contact.edit_first_contact(
         Contact(firstname="Alexander", middlename="Sergeevich", lastname="Pushkin", nickname="poet", company="",
                 address="St. Petersburg, Nevsky av.",
-                mobile="", email="", bday="6", bmonth="June", byear="1799"))
-    app.session.logout()
+                mobilephone="", email="", bday="6", bmonth="June", byear="1799"))
