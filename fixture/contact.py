@@ -6,9 +6,15 @@ class ContactHelper:
     def __init__(self, app):
         self.app = app
 
+    def open_home_page(self):
+        wd = self.app.wd
+        if not len(wd.find_elements_by_name("searchstring")) > 0:
+            wd.find_element_by_link_text("home").click()
+
     def open_add_new_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("add new").click()
+        if not (wd.current_url.endswith("/edit.php") and len(wd.find_elements_by_name("submit")) > 0):
+            wd.find_element_by_link_text("add new").click()
 
     def return_to_home_page(self):
         wd = self.app.wd
@@ -55,7 +61,7 @@ class ContactHelper:
 
     def create(self, contact):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         self.open_add_new_page()
         # fill contact form
         self.fill_form(contact)
@@ -65,18 +71,18 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # submit deletion
         wd.find_element_by_css_selector("[value = 'Delete']").click()
-        #accept pop-up
+        # accept pop-up
         wd.switch_to.alert.accept()
         self.return_to_home_page()
 
     def move_first_contact_to_first_group(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # select group
@@ -88,7 +94,7 @@ class ContactHelper:
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         # init contact edit
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         # edit contact
@@ -100,12 +106,12 @@ class ContactHelper:
     # если такой тест не нужен, то удалить его совсем
     def view_first_contact(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         # view contact
         wd.find_element_by_xpath("//img[@alt='Details']").click()
         self.return_to_home_page()
 
     def count(self):
         wd = self.app.wd
-        self.app.open_home_page()
+        self.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
