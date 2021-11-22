@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.support.ui import Select
 
 
@@ -106,9 +104,6 @@ class ContactHelper:
         # view contact
         wd.find_element_by_xpath("//img[@alt='Details']").click()
         self.return_to_home_page()
-        # после удаления этого оиждания в application.py тест падает
-        # ругается, что не успевает разлогиниться, поэтому поставила сюда
-        wd.implicitly_wait(2)
 
     def count(self):
         wd = self.app.wd
