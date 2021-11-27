@@ -69,6 +69,7 @@ class ContactHelper:
         # submit contact creation
         wd.find_element_by_name("submit").click()
         self.app.return_to_home_page()
+        self.contact_cache = None
 
     def delete_first_contact(self):
         wd = self.app.wd
@@ -80,6 +81,7 @@ class ContactHelper:
         # accept pop-up
         wd.switch_to.alert.accept()
         self.return_to_home_page()
+        self.contact_cache = None
 
     def move_first_contact_to_first_group(self):
         wd = self.app.wd
@@ -92,6 +94,7 @@ class ContactHelper:
         # submit add
         wd.find_element_by_name("add").click()
         self.return_to_home_page()
+        self.contact_cache = None
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
@@ -103,6 +106,7 @@ class ContactHelper:
         # submit edit
         wd.find_element_by_name("update").click()
         self.app.return_to_home_page()
+        self.contact_cache = None
 
     # если такой тест не нужен, то удалить его совсем
     def view_first_contact(self):
@@ -111,20 +115,24 @@ class ContactHelper:
         # view contact
         wd.find_element_by_xpath("//img[@alt='Details']").click()
         self.return_to_home_page()
+        self.contact_cache = None
 
     def count(self):
         wd = self.app.wd
         self.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    contact_cache = None
+
     def get_contact_list(self):
-        wd = self.app.wd
-        self.open_home_page()
-        contacts = []
-        for element in wd.find_elements_by_css_selector('tr')[1:]:
-            cells = element.find_elements_by_tag_name("td")
-            id = cells[0].find_element_by_tag_name("input").get_attribute("value")
-            lastname = cells[1].text.strip()
-            firstname = cells[2].text.strip()
-            contacts.append(Contact(id=id, lastname=lastname, firstname=firstname))
-        return contacts
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_home_page()
+            self.contact_cache = []
+            for element in wd.find_elements_by_css_selector('tr')[1:]:
+                cells = element.find_elements_by_tag_name("td")
+                id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                lastname = cells[1].text.strip()
+                firstname = cells[2].text.strip()
+                self.contact_cache.append(Contact(id=id, lastname=lastname, firstname=firstname))
+        return list(self.contact_cache)

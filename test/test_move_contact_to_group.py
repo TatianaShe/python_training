@@ -13,8 +13,8 @@ def test_move_first_contact_to_first_group(app):
         app.group.create(Group(name="Group for contact"))
     old_contacts = app.contact.get_contact_list()
     app.contact.move_first_contact_to_first_group()
-    new_contacts = app.contact.get_contact_list()
     # проверяем, что количество контактов не изменилось
-    assert len(old_contacts) == len(new_contacts)
+    assert len(old_contacts) == app.contact.count()
+    new_contacts = app.contact.get_contact_list()
     # проверяем, что первый контакт, который добавили в группу (первый), остался на своем месте
     assert new_contacts[0].id == old_contacts[0].id
