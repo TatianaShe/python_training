@@ -71,11 +71,20 @@ class ContactHelper:
         self.app.return_to_home_page()
         self.contact_cache = None
 
+    def select_first_contact(self):
+        self.select_contact_by_index(0)
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.open_home_page()
-        # select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         # submit deletion
         wd.find_element_by_css_selector("[value = 'Delete']").click()
         # accept pop-up
@@ -84,10 +93,12 @@ class ContactHelper:
         self.contact_cache = None
 
     def move_first_contact_to_first_group(self):
+        self.move_contact_by_index_to_first_group(0)
+
+    def move_contact_by_index_to_first_group(self, index):
         wd = self.app.wd
         self.open_home_page()
-        # select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         # select group
         wd.find_element_by_name("to_group").click()
         Select(wd.find_element_by_name("to_group")).select_by_index("0")
@@ -96,11 +107,23 @@ class ContactHelper:
         self.return_to_home_page()
         self.contact_cache = None
 
-    def edit_first_contact(self, contact):
+    def open_contact_for_edit_by_index(self, index):
         wd = self.app.wd
         self.open_home_page()
         # init contact edit
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[7]
+        cell.find_element_by_tag_name("a").click()
+
+    def edit_first_contact(self, contact):
+        self.edit_contact_by_index(0, contact)
+
+    def edit_contact_by_index(self, index, contact):
+        wd = self.app.wd
+        self.open_home_page()
+        self.select_contact_by_index(index)
+        # init contact edit
+        self.open_contact_for_edit_by_index(index)
         # edit contact
         self.fill_form(contact)
         # submit edit
@@ -109,11 +132,16 @@ class ContactHelper:
         self.contact_cache = None
 
     # если такой тест не нужен, то удалить его совсем
-    def view_first_contact(self):
+    def view_fist_contact(self):
+        self.view_contact_by_index(0)
+
+    def view_contact_by_index(self, index):
         wd = self.app.wd
         self.open_home_page()
         # view contact
-        wd.find_element_by_xpath("//img[@alt='Details']").click()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[6]
+        cell.find_element_by_tag_name("a").click()
         self.return_to_home_page()
         self.contact_cache = None
 
