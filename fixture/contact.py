@@ -121,7 +121,6 @@ class ContactHelper:
     def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_home_page()
-        self.select_contact_by_index(index)
         # init contact edit
         self.open_contact_for_edit_by_index(index)
         # edit contact
