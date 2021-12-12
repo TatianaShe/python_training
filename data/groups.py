@@ -18,4 +18,3 @@ test_data = [Group(name="", header="", footer="")] + [
     Group(name=random_string("name", 10), header=random_string("header", 20), footer=random_string("footer", 20))
     for _ in range(5)
 ]
-
