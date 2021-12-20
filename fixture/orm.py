@@ -74,8 +74,8 @@ class ORMFixture:
                                                 bday=contact.bday, bmonth=contact.bmonth, byear=contact.byear,
                                                 aday=contact.aday, amonth=contact.amonth, ayear=contact.ayear,
                                                 address2=contact.address2, secondaryphone=contact.secondaryphone,
-                                                all_phones_from_home_page=contact.all_phones_from_home_page,
-                                                all_emails_from_home_page=contact.all_emails_from_home_page)
+                                                all_phones_from_home_page=contact.homephone+contact.mobilephone+contact.workphone+contact.secondaryphone,
+                                                all_emails_from_home_page=contact.email+contact.email2+contact.email3)
         return list(map(convert, contacts))
 
     @db_session
