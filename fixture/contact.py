@@ -155,6 +155,14 @@ class ContactHelper:
         cell = row.find_elements_by_tag_name("td")[6]
         cell.find_element_by_tag_name("a").click()
 
+    def open_contact_for_view_by_id(self, id):
+        wd = self.app.wd
+        self.open_home_page()
+        # init contact edit
+        row = wd.find_elements_by_name("entry")[id]
+        cell = row.find_elements_by_tag_name("td")[6]
+        cell.find_element_by_tag_name("a").click()
+
     def view_fist_contact(self):
         self.view_contact_by_index(0)
 
@@ -163,6 +171,14 @@ class ContactHelper:
         self.open_home_page()
         # view contact
         self.open_contact_for_view_by_index(index)
+        self.return_to_home_page()
+        self.contact_cache = None
+
+    def view_contact_by_id(self, id):
+        wd = self.app.wd
+        self.open_home_page()
+        # view contact
+        self.open_contact_for_view_by_id(id)
         self.return_to_home_page()
         self.contact_cache = None
 

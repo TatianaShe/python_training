@@ -48,7 +48,9 @@ class DbFixture:
                                             homepage=homepage,
                                             bday=bday, bmonth=bmonth, byear=byear,
                                             aday=aday, amonth=amonth, ayear=ayear,
-                                            address2=address2, secondaryphone=secondaryphone))
+                                            address2=address2, secondaryphone=secondaryphone,
+                                            all_phones_from_home_page=homephone+mobilephone+workphone+secondaryphone,
+                                            all_emails_from_home_page=email+email2+email3))
         finally:
             cursor.close()
         return contact_list

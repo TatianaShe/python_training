@@ -20,9 +20,30 @@ class ORMFixture:
     class ORMContact(db.Entity):
         _table_ = "addressbook"
         id = PrimaryKey(int, column="id")
-        firstname = Optional(str, column="firstname")
-        lastname = Optional(str, column="lastname")
         deprecated = Optional(datetime, column="deprecated")
+        firstname = Optional(str, column='firstname')
+        lastname = Optional(str, column='lastname')
+        middlename = Optional(str, column='middlename')
+        nickname = Optional(str, column='nickname')
+        title = Optional(str, column='title')
+        address = Optional(str, column='address')
+        company = Optional(str, column='company')
+        homephone = Optional(str, column='home')
+        mobilephone = Optional(str, column='mobile')
+        workphone = Optional(str, column='work')
+        faxphone = Optional(str, column='fax')
+        email = Optional(str, column='email')
+        email2 = Optional(str, column='email2')
+        email3 = Optional(str, column='email3')
+        homepage = Optional(str, column='homepage')
+        bday = Optional(str, column='bday')
+        bmonth = Optional(str, column='bmonth')
+        byear = Optional(str, column='byear')
+        aday = Optional(str, column='aday')
+        amonth = Optional(str, column='amonth')
+        ayear = Optional(str, column='ayear')
+        address2 = Optional(str, column='address2')
+        secondaryphone = Optional(str, column='phone2')
         groups = Set(lambda: ORMFixture.ORMGroup, table="address_in_groups", column="group_id", reverse="contacts", lazy=True)
 
     def __init__(self, host, name, user, password):
@@ -42,7 +63,19 @@ class ORMFixture:
 
     def convert_contacts_to_model(self, contacts):
         def convert(contact):
-            return Contact(id=str(contact.id), firstname=contact.firstname, lastname=contact.lastname)
+            return Contact(id=str(contact.id), firstname=contact.firstname, middlename=contact.middlename,
+                                                lastname=contact.lastname, nickname=contact.nickname,
+                                                title=contact.title, company=contact.company,
+                                                address=contact.address, homephone=contact.homephone,
+                                                mobilephone=contact.mobilephone, workphone=contact.workphone,
+                                                faxphone=contact.faxphone, email=contact.email,
+                                                email2=contact.email2, email3=contact.email3,
+                                                homepage=contact.homepage,
+                                                bday=contact.bday, bmonth=contact.bmonth, byear=contact.byear,
+                                                aday=contact.aday, amonth=contact.amonth, ayear=contact.ayear,
+                                                address2=contact.address2, secondaryphone=contact.secondaryphone,
+                                                all_phones_from_home_page=contact.all_phones_from_home_page,
+                                                all_emails_from_home_page=contact.all_emails_from_home_page)
         return list(map(convert, contacts))
 
     @db_session
