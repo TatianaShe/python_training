@@ -126,18 +126,6 @@ class ContactHelper:
         wd.find_element_by_name("remove").click()
         wd.find_element_by_link_text(f'group page "{delete_from_group}"').click()
 
-    def move_contact_to_group_by_id(self, contact_id, group_id):
-        wd = self.app.wd
-        self.open_home_page()
-        self.select_contact_by_id(contact_id)
-        # select group
-        wd.find_element_by_name("to_group").click()
-        Select(wd.find_element_by_name("to_group")).select_by_value(group_id)
-        # submit add
-        wd.find_element_by_name("add").click()
-        self.return_to_home_page()
-        self.contact_cache = None
-
     def open_contact_for_edit_by_index(self, index):
         wd = self.app.wd
         self.open_home_page()
