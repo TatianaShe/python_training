@@ -109,15 +109,30 @@ class ContactHelper:
         self.contact_cache = None
 
     def move_first_contact_to_first_group(self):
-        self.move_contact_by_index_to_first_group(0)
+        self.add_contact_to_group_by_index(0)
 
-    def move_contact_by_index_to_first_group(self, index):
+    def add_contact_to_group_by_index(self, contact_index, group_for_add):
         wd = self.app.wd
         self.open_home_page()
-        self.select_contact_by_index(index)
+        wd.find_element_by_css_selector(f"input[id='{contact_index}']").click()
+        self.change_select_field_value("to_group", group_for_add)
+        wd.find_element_by_name("add").click()
+        wd.find_element_by_link_text(f'group page "{group_for_add}"').click()
+
+    def delete_contact_from_group_by_index(self, contact_index, delete_from_group):
+        wd = self.app.wd
+        self.change_select_field_value("group", delete_from_group)
+        wd.find_element_by_css_selector(f"input[id='{contact_index}']").click()
+        wd.find_element_by_name("remove").click()
+        wd.find_element_by_link_text(f'group page "{delete_from_group}"').click()
+
+    def move_contact_to_group_by_id(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_home_page()
+        self.select_contact_by_id(contact_id)
         # select group
         wd.find_element_by_name("to_group").click()
-        Select(wd.find_element_by_name("to_group")).select_by_index("0")
+        Select(wd.find_element_by_name("to_group")).select_by_value(group_id)
         # submit add
         wd.find_element_by_name("add").click()
         self.return_to_home_page()

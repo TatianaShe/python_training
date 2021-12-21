@@ -55,5 +55,23 @@ class DbFixture:
             cursor.close()
         return contact_list
 
+    def get_all_contacts_not_in_groups(self):
+        contact_list = []
+        with self.connection.cursor() as cursor:
+            cursor.execute("""select 
+                                    a.id, a.firstname
+                               from addressbook a left join address_in_groups ag
+                               on a.id = ag.id
+                               left join group_list g
+                               on ag.group_id = g.group_id  
+                               where a.deprecated = '0000-00-00 00:00:00'
+                               and ag.group_id is NULL  """)
+
+            for row in cursor:
+                (id, firstname) = row
+                contact_list.append(Contact(id=id))
+        return contact_list
+
+
     def destroy(self):
         self.connection.close()
