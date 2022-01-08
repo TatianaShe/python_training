@@ -1,0 +1,60 @@
+{
+  "75f8012d44a9475bfef10e001d379905" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b97121a0988175ad",
+      "status" : "passed",
+      "time" : {
+        "start" : 1641667766341,
+        "stop" : 1641667767404,
+        "duration" : 1063
+      }
+    } ]
+  },
+  "98a661c1d63958ba0c216e8fcd966cce" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9491f01d357ba0fe",
+      "status" : "passed",
+      "time" : {
+        "start" : 1641667765092,
+        "stop" : 1641667766296,
+        "duration" : 1204
+      }
+    } ]
+  },
+  "4497673b8fecbd9d4005cc1dd0af141b" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f57ddcc25cc5b60e",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert [325:222;222;...footer-1, ...] == [325:222;222;...footer-1, ...]\n  Left contains one more item: None:name'3;header-3;footer-3\n  Use -v to get the full diff",
+      "time" : {
+        "start" : 1641667767447,
+        "stop" : 1641667768512,
+        "duration" : 1065
+      }
+    } ]
+  }
+}

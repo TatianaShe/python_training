@@ -1,0 +1,64 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "Tata-laptop",
+    "children" : [ {
+      "name" : "22888-MainThread",
+      "children" : [ {
+        "name" : "test_add_group[None:name'3;header-3;footer-3]",
+        "uid" : "f57ddcc25cc5b60e",
+        "parentUid" : "76e69c0677e0db6cb5e15a21327bc35c",
+        "status" : "failed",
+        "time" : {
+          "start" : 1641667767447,
+          "stop" : 1641667768512,
+          "duration" : 1065
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "None:name'3;header-3;footer-3" ]
+      }, {
+        "name" : "test_add_group[None:name-2;header-2;footer-2]",
+        "uid" : "b97121a0988175ad",
+        "parentUid" : "76e69c0677e0db6cb5e15a21327bc35c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641667766341,
+          "stop" : 1641667767404,
+          "duration" : 1063
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "None:name-2;header-2;footer-2" ]
+      }, {
+        "name" : "test_add_group[None:name-1;header-1;footer-1]",
+        "uid" : "9491f01d357ba0fe",
+        "parentUid" : "76e69c0677e0db6cb5e15a21327bc35c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641667765092,
+          "stop" : 1641667766296,
+          "duration" : 1204
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "None:name-1;header-1;footer-1" ]
+      } ],
+      "uid" : "76e69c0677e0db6cb5e15a21327bc35c"
+    } ],
+    "uid" : "160f248c58c55a37f98d14cb23261de8"
+  } ]
+}

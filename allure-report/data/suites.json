@@ -1,0 +1,64 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "test",
+    "children" : [ {
+      "name" : "test_add_group",
+      "children" : [ {
+        "name" : "test_add_group[None:name-1;header-1;footer-1]",
+        "uid" : "9491f01d357ba0fe",
+        "parentUid" : "5d3e96f7ebf064b5c68ffe91a0a61511",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641667765092,
+          "stop" : 1641667766296,
+          "duration" : 1204
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "None:name-1;header-1;footer-1" ]
+      }, {
+        "name" : "test_add_group[None:name-2;header-2;footer-2]",
+        "uid" : "b97121a0988175ad",
+        "parentUid" : "5d3e96f7ebf064b5c68ffe91a0a61511",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641667766341,
+          "stop" : 1641667767404,
+          "duration" : 1063
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "None:name-2;header-2;footer-2" ]
+      }, {
+        "name" : "test_add_group[None:name'3;header-3;footer-3]",
+        "uid" : "f57ddcc25cc5b60e",
+        "parentUid" : "5d3e96f7ebf064b5c68ffe91a0a61511",
+        "status" : "failed",
+        "time" : {
+          "start" : 1641667767447,
+          "stop" : 1641667768512,
+          "duration" : 1065
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ "None:name'3;header-3;footer-3" ]
+      } ],
+      "uid" : "5d3e96f7ebf064b5c68ffe91a0a61511"
+    } ],
+    "uid" : "ff2b04dbb9c449a4d40723f51d841925"
+  } ]
+}
